@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="CQRS\Handlers\CommandHandlers\" />
-    <Folder Include="CQRS\Handlers\QueryHandlers\" />
     <Folder Include="DTOs\" />
   </ItemGroup>
 

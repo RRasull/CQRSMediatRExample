@@ -1,4 +1,6 @@
-﻿namespace CQRSMediatRExample.CQRS.Queries.Response
+﻿using MediatR;
+
+namespace CQRSMediatRExample.CQRS.Queries.Response
 {
     public class GetAllProductQueryResponse
     {
