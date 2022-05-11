@@ -23,5 +23,13 @@ namespace CQRSMediatRExample.Controllers
             var query = new GetByIdProductQueryRequest() { Id = id };
             return Ok(await _mediatR.Send(query));
         }
+
+        [HttpGet()]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllProductQueryRequest();
+            return Ok(await _mediatR.Send(query));
+
+        }
     }
 }
