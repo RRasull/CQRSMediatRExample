@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="MediatR\Commands\" />
-    <Folder Include="MediatR\Queries\" />
+    <Folder Include="CQRS\Handlers\CommandHandlers\" />
+    <Folder Include="CQRS\Handlers\QueryHandlers\" />
+    <Folder Include="CQRS\Queries\Request\" />
+    <Folder Include="CQRS\Queries\Response\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 
   <ItemGroup>
