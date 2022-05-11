@@ -19,10 +19,9 @@ namespace CQRSMediatRExample.CQRS.Handlers.QueryHandlers
             _context = context;
         }
 
-
         public Task<GetByIdProductQueryResponse> Handle(GetByIdProductQueryRequest request, CancellationToken cancellationToken)
         {
-            var product = _context.Products.Where(x => x.Id == request.ProductId.Id).FirstOrDefault();
+            var product = _context.Products.Where(x => x.Id == request.Id).FirstOrDefault();
             var response = new GetByIdProductQueryResponse
             {
                 Id = product.Id,
