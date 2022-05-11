@@ -1,4 +1,6 @@
-﻿using CQRSMediatRExample.CQRS.Queries.Request;
+﻿using CQRSMediatRExample.CQRS.Commands.Request;
+using CQRSMediatRExample.CQRS.Commands.Response;
+using CQRSMediatRExample.CQRS.Queries.Request;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +19,7 @@ namespace CQRSMediatRExample.Controllers
             _mediatR = mediatR;
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetByIdProductQueryRequest() { Id = id };
@@ -25,11 +27,16 @@ namespace CQRSMediatRExample.Controllers
         }
 
         [HttpGet()]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(GetAllProductQueryRequest query)
         {
-            var query = new GetAllProductQueryRequest();
             return Ok(await _mediatR.Send(query));
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CreateProductCommandRequest requestModel)
+        {
+            CreateProductCommandResponse response = await _mediatR.Send(requestModel);
+            return Ok(response);
         }
     }
 }

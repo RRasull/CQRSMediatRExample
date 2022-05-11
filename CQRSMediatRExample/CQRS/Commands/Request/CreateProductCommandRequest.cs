@@ -1,8 +1,11 @@
-﻿namespace CQRSMediatRExample.CQRS.Commands.Request
+﻿using CQRSMediatRExample.CQRS.Commands.Response;
+using MediatR;
+
+namespace CQRSMediatRExample.CQRS.Commands.Request
 {
-    public class CreateProductCommandRequest
+    public class CreateProductCommandRequest : IRequest<CreateProductCommandResponse>
     {
         public string Name { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 }
