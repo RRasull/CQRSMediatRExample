@@ -8,8 +8,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="CQRS\Handlers\CommandHandlers\" />
     <Folder Include="CQRS\Handlers\QueryHandlers\" />
-    <Folder Include="CQRS\Queries\Request\" />
-    <Folder Include="CQRS\Queries\Response\" />
     <Folder Include="DTOs\" />
   </ItemGroup>
 
