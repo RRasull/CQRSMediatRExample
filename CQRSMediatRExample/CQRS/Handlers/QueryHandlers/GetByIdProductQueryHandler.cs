@@ -2,6 +2,7 @@
 using CQRSMediatRExample.CQRS.Queries.Response;
 using CQRSMediatRExample.DAL;
 using MediatR;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,10 @@ namespace CQRSMediatRExample.CQRS.Handlers.QueryHandlers
         public Task<GetByIdProductQueryResponse> Handle(GetByIdProductQueryRequest request, CancellationToken cancellationToken)
         {
             var product = _context.Products.Where(x => x.Id == request.Id).FirstOrDefault();
+            if (product is null)
+            {
+                throw new Exception("Product is Not Found");
+            }
             var response = new GetByIdProductQueryResponse
             {
                 Id = product.Id,

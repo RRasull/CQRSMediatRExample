@@ -1,3 +1,4 @@
+using CQRSMediatRExample.CQRS.Handlers.CommandHandlers;
 using CQRSMediatRExample.CQRS.Handlers.QueryHandlers;
 using CQRSMediatRExample.DAL;
 using MediatR;
@@ -34,10 +35,14 @@ namespace CQRSMediatRExample
             services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+
 
             services.AddTransient<GetByIdProductQueryHandler>();
             services.AddTransient<GetAllProductQueryHandler>();
+            services.AddTransient<CreateProductCommandHandler>();
+            services.AddTransient<DeleteProductCommandHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
