@@ -27,9 +27,10 @@ namespace CQRSMediatRExample.Controllers
             return Ok(await _mediatR.Send(query));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll(GetAllProductQueryRequest query)
+        [HttpGet()]
+        public async Task<IActionResult> GetAll()
         {
+            var query = new GetAllProductQueryRequest();
             return Ok(await _mediatR.Send(query));
         }
 
